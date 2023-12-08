@@ -72,6 +72,7 @@ server.listen(PORT, () => {
 });
 
 async function findAllMovies(db) {
+    //const db = client.db('NollyFlix')
     const cursor = db.collection('NollyFlixcollection').find({});
     return cursor.toArray();
 }
