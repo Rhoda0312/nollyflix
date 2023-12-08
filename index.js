@@ -4,7 +4,7 @@ const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
 // MongoDB connection URI and database name
-const mongoURI = process.env.MONGO_URI || 'mongodb+srv://rhoda:ajayi@rhodacluster.wxf3mmm.mongodb.net/?authMechanism=DEFAULT&tls=false';
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://:ajayi@rhodacluster.wxf3mmm.mongodb.net/?authMechanism=DEFAULT';
 const dbName = 'NollyFlix';
 
 // Create a new MongoClient
