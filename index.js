@@ -8,7 +8,7 @@ const mongoURI = process.env.MONGO_URI || 'mongodb+srv://rhoda:ajayi@rhodacluste
 const dbName = 'NollyFlix';
 
 // Create a new MongoClient
-const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(mongoURI);
 
 // Global variable to store the DB connection
 let db;
