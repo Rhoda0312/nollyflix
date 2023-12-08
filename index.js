@@ -8,15 +8,16 @@ const mongoURI = process.env.MONGO_URI || 'mongodb+srv://rhoda:ajayi@rhodacluste
 const dbName = 'NollyFlix';
 
 // Create a new MongoClient
-const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+//const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(mongoURI, { useUnifiedTopology: true });
 
 // Global variable to store the DB connection
 let db;
 
 // Connect to MongoDB
 client.connect()
-    .then(connection => {
-        db = connection.db(dbName);
+    .then(() => {
+        db = client.db(dbName);
         console.log('Connected to MongoDB');
     })
     .catch(err => console.error('Failed to connect to MongoDB', err));
@@ -28,6 +29,8 @@ const server = http.createServer((request, response) => {
     response.setHeader('Access-Control-Allow-Origin', '*');
     response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    response.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'nonce-RANDOM-NONCE'");
+
 
     if (url === '/') {
         fs.readFile(path.join(__dirname, 'public', 'index.html'), 'utf-8', (error, content) => {
