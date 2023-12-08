@@ -49,16 +49,6 @@ const server = http.createServer((request, response) => {
                 response.writeHead(500, { 'Content-Type': 'text/plain' });
                 response.end(`An error occurred: ${error.message}`);
             });
-    } else if (url === '/style.css') {
-        fs.readFile(path.join(__dirname, 'public', 'style.css'), 'utf-8', (error, content) => {
-            if (error) {
-                response.writeHead(500, { 'Content-Type': 'text/plain' });
-                response.end(`An error occurred: ${error.message}`);
-            } else {
-                response.writeHead(200, { 'Content-Type': 'text/css' });
-                response.end(content);
-            }
-        });
     } else {
         //404 error
         response.writeHead(404, { 'Content-Type': 'text/html' });
